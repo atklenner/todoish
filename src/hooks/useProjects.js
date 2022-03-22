@@ -10,6 +10,7 @@ export default function useProjects() {
 
     const unsubscribe = onSnapshot(collection(db, "projects"), (snapshot) => {
       const allProjects = snapshot.docs.map((project) => ({
+        id: project.id,
         ...project.data(),
       }));
       setProjects(allProjects);

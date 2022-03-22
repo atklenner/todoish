@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function AddProjectForm({ handleClick }) {
   const [name, setName] = useState("");
-  const currentUser = "1234";
 
   function handleChange(e) {
     setName(e.target.value);
@@ -15,13 +14,11 @@ export default function AddProjectForm({ handleClick }) {
     handleClick();
     addDoc(collection(db, "projects"), {
       name: name,
-      projectId: 1,
-      userId: currentUser,
     });
   }
   return (
     <form onSubmit={handleSubmit}>
-      <label for="name">
+      <label>
         Project Name:
         <input
           type="text"

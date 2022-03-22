@@ -9,7 +9,10 @@ export default function useTasks() {
     console.log("getting tasks");
 
     const unsubscribe = onSnapshot(collection(db, "tasks"), (snapshot) => {
-      const allTasks = snapshot.docs.map((task) => ({ ...task.data() }));
+      const allTasks = snapshot.docs.map((task) => ({
+        id: task.id,
+        ...task.data(),
+      }));
       setTasks(allTasks);
     });
     return () => unsubscribe();

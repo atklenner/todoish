@@ -3,14 +3,23 @@ import { useProjectContext } from "../context/ProjectContext";
 import AddProjectForm from "./AddProjectForm";
 
 export default function Sidebar() {
-  const { projects } = useProjectContext();
+  const { projects, setSelectedProject } = useProjectContext();
   const [showAddProjectForm, setShowAddProjectForm] = useState(false);
+
+  function handleClick(project) {
+    setSelectedProject(project.id);
+  }
+
   return (
     <aside>
       <h2>Projects</h2>
       <ul>
         {projects.map((project) => {
-          return <li>{project.name}</li>;
+          return (
+            <li key={project.id} onClick={() => handleClick(project)}>
+              {project.name}
+            </li>
+          );
         })}
       </ul>
       {!showAddProjectForm && (

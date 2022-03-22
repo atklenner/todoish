@@ -1,8 +1,10 @@
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
+import { useProjectContext } from "../context/ProjectContext";
 import { db } from "../firebase";
 
 export default function AddTaskForm({ handleClick }) {
+  const { selectedProject } = useProjectContext();
   const [task, setTask] = useState("");
 
   function handleSubmit(e) {
@@ -10,10 +12,8 @@ export default function AddTaskForm({ handleClick }) {
     handleClick();
     addDoc(collection(db, "tasks"), {
       archived: false,
-      date: "",
-      projectId: 1,
+      projectId: selectedProject,
       task: task,
-      userId: "1234",
     });
   }
 
@@ -23,7 +23,7 @@ export default function AddTaskForm({ handleClick }) {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <label for="task">
+      <label>
         Task:
         <input
           type="text"
