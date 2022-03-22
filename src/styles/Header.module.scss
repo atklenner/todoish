@@ -1,0 +1,42 @@
+@use "sass:color";
+
+header {
+  background-color: tomato;
+  color: whitesmoke;
+  padding: 0.25em 1.25em;
+
+  nav {
+    display: flex;
+    max-width: var(--max-width);
+    margin: 0 auto;
+
+    h1 {
+      font-size: 2rem;
+      margin: auto 0;
+    }
+
+    ul {
+      margin: auto 0 auto auto;
+      display: flex;
+
+      li {
+        font-weight: 600;
+        font-size: 2rem;
+        margin-left: 0.5em;
+
+        button {
+          padding: none;
+          border: none;
+          background-color: transparent;
+          color: inherit;
+          cursor: pointer;
+          border-radius: 10px;
+
+          &:hover {
+            background-color: darken(tomato, 10%);
+          }
+        }
+      }
+    }
+  }
+}

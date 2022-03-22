@@ -1,0 +1,13 @@
+main {
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;
+
+  aside {
+    width: 30%;
+  }
+
+  div {
+    width: 70%;
+  }
+}
