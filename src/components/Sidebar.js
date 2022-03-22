@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useProjectContext } from "../context/ProjectContext";
-// import useProjects from "../hooks/useProjects";
 import AddProjectForm from "./AddProjectForm";
 
 export default function Sidebar() {
-  // const [projects] = useProjects();
   const { projects } = useProjectContext();
   const [showAddProjectForm, setShowAddProjectForm] = useState(false);
   return (

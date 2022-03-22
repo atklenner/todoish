@@ -5,7 +5,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 export default function useProjects() {
   const [projects, setProjects] = useState([]);
 
-  async function getProjects() {
+  useEffect(() => {
     console.log("getting projects");
 
     const unsubscribe = onSnapshot(collection(db, "projects"), (snapshot) => {
@@ -15,9 +15,7 @@ export default function useProjects() {
       setProjects(allProjects);
     });
     return () => unsubscribe();
-  }
+  }, []);
 
-  useEffect(() => getProjects(), []);
-
-  return [projects, setProjects];
+  return [projects];
 }
