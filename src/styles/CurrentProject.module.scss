@@ -1,0 +1,14 @@
+.container {
+  padding: 1em;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  width: 70%;
+
+  ul {
+    padding: 0;
+
+    li {
+      margin-bottom: 0.5em;
+    }
+  }
+}

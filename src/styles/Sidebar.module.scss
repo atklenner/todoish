@@ -1,0 +1,10 @@
+.ul {
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75em;
+    cursor: pointer;
+  }
+}

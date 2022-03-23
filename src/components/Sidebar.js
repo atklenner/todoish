@@ -4,6 +4,7 @@ import { useProjectContext } from "../context/ProjectContext";
 import { db } from "../firebase";
 import AddProjectForm from "./AddProjectForm";
 import { GrTrash } from "react-icons/gr";
+import styles from "../styles/Sidebar.module.scss";
 
 export default function Sidebar() {
   const { projects, setSelectedProject, selectedProject } = useProjectContext();
@@ -23,19 +24,23 @@ export default function Sidebar() {
   return (
     <aside>
       <h2>Projects</h2>
-      <ul>
+      <ul className={styles.ul}>
         {projects.map((project) => {
           return (
-            <li key={project.id}>
+            <li
+              key={project.id}
+              className={project.id === selectedProject ? "selected" : ""}
+            >
               <span onClick={() => handleClick(project)}>{project.name}</span>
-              {/* <span >trash</span> */}
               <GrTrash onClick={() => deleteProject(project.id)} />
             </li>
           );
         })}
       </ul>
       {!showAddProjectForm && (
-        <button onClick={() => setShowAddProjectForm(true)}>New Project</button>
+        <button onClick={() => setShowAddProjectForm(true)} className="button">
+          New Project
+        </button>
       )}
       {showAddProjectForm && (
         <AddProjectForm handleClick={() => setShowAddProjectForm(false)} />

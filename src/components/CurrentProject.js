@@ -3,30 +3,34 @@ import { useState } from "react";
 import AddTaskForm from "./AddTaskForm";
 import { useProjectContext } from "../context/ProjectContext";
 import Task from "./Task";
+import styles from "../styles/CurrentProject.module.scss";
 
 export default function CurrentProject() {
   const { selectedProject, projects } = useProjectContext();
   const [tasks] = useTasks();
   const [showAddTaskForm, setShowAddTaskForm] = useState(false);
 
-  // function deleteCompletedTasks() {
-
-  // }
-
   return (
-    <div>
+    <div className={styles.container}>
       <h2>
         {selectedProject &&
           projects.find((project) => project.id === selectedProject).name}
       </h2>
-      {selectedProject &&
-        tasks
-          .filter((task) => task.projectId === selectedProject)
-          .map((task) => <Task key={task.id} {...task} />)}
+      <ul>
+        {selectedProject &&
+          tasks
+            .filter((task) => task.projectId === selectedProject)
+            .map((task) => (
+              <li key={task.id}>
+                <Task {...task} />
+              </li>
+            ))}
+      </ul>
       {selectedProject && !showAddTaskForm && (
         <div>
-          <button onClick={() => setShowAddTaskForm(true)}>Add Task</button>
-          {/* <button onClick={deleteCompletedTasks}>Remove Completed Tasks</button> */}
+          <button onClick={() => setShowAddTaskForm(true)} className="button">
+            Add Task
+          </button>
         </div>
       )}
       {showAddTaskForm && (

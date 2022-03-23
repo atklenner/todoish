@@ -15,11 +15,11 @@ export default function Task({ id, task, archived, projectId }) {
   }
   return (
     <div className={styles.container}>
-      <div onClick={archiveTask}>
+      <div onClick={archiveTask} className={styles.taskLogo}>
         {archived ? <GrCheckboxSelected /> : <GrCheckbox />}
       </div>
       <p className={archived ? styles.archived : ""}>{task}</p>
-      <div onClick={deleteTask}>
+      <div onClick={deleteTask} className={styles.taskLogo}>
         <GrTrash />
       </div>
     </div>

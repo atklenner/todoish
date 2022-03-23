@@ -12,9 +12,11 @@ export default function AddProjectForm({ handleClick }) {
   async function handleSubmit(e) {
     e.preventDefault();
     handleClick();
-    addDoc(collection(db, "projects"), {
-      name: name,
-    });
+    if (name) {
+      addDoc(collection(db, "projects"), {
+        name: name,
+      });
+    }
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -27,7 +29,7 @@ export default function AddProjectForm({ handleClick }) {
           onChange={(e) => handleChange(e)}
         />
       </label>
-      <button>Submit</button>
+      <button className="button">Submit</button>
     </form>
   );
 }

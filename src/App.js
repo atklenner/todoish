@@ -5,10 +5,8 @@ import { ProjectContextProvider } from "./context/ProjectContext";
 export default function App() {
   return (
     <ProjectContextProvider>
-      <div className="container">
-        <Header />
-        <Content />
-      </div>
+      <Header />
+      <Content />
     </ProjectContextProvider>
   );
 }

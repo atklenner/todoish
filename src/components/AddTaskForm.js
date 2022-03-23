@@ -10,11 +10,13 @@ export default function AddTaskForm({ handleClick }) {
   function handleSubmit(e) {
     e.preventDefault();
     handleClick();
-    addDoc(collection(db, "tasks"), {
-      archived: false,
-      projectId: selectedProject,
-      task: task,
-    });
+    if (task) {
+      addDoc(collection(db, "tasks"), {
+        archived: false,
+        projectId: selectedProject,
+        task: task,
+      });
+    }
   }
 
   function handleChange(e) {
@@ -32,7 +34,7 @@ export default function AddTaskForm({ handleClick }) {
           onChange={(e) => handleChange(e)}
         />
       </label>
-      <button>Add Task</button>
+      <button className="button">Submit</button>
     </form>
   );
 }
