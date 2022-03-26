@@ -3,7 +3,7 @@ import { db } from "../firebase";
 import styles from "../styles/Task.module.scss";
 import { GrTrash, GrCheckbox, GrCheckboxSelected } from "react-icons/gr";
 
-export default function Task({ id, task, archived, projectId }) {
+export default function Task({ id, task, archived }) {
   function archiveTask() {
     updateDoc(doc(db, "tasks", id), {
       archived: !archived,

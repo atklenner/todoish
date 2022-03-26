@@ -1,12 +1,12 @@
 @use "sass:color";
 
 .container {
-  background-color: tomato;
+  background-color: var(--accent);
 
   header {
     padding: 0.5em 1em;
     max-width: var(--max-width);
-    color: whitesmoke;
+    color: var(--text-primary);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
