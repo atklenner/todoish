@@ -6,7 +6,7 @@ export default function Header() {
   const { darkMode, setDarkMode } = useProjectContext();
 
   return (
-    <div className={styles.container} data-theme={darkMode ? "dark" : ""}>
+    <div className={styles.container}>
       <header>
         <h1>Todoish</h1>
         <button
